@@ -1,0 +1,8 @@
+        <variant>
+          <configItem>
+            <name>bug</name>
+            <shortDescription>bug</shortDescription>
+            <description>Bug layout</description>
+          </configItem>
+        </variant>
+
