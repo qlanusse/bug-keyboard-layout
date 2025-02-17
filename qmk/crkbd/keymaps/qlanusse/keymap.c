@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX,   MS_UP, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, MS_WHLU, XXXXXXX, XXXXXXX, XXXXXXX,
+   XXXXXXX, XXXXXXX, G(C(KC_LEFT)), MS_UP, G(C(KC_RGHT)), XXXXXXX,            XXXXXXX, G(C(KC_LEFT)), MS_WHLU, G(C(KC_RGHT)), XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, XXXXXXX, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX,                      XXXXXXX, MS_WHLL, MS_WHLD, MS_WHLR, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_TAB,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                   KC_LEFT_ALT,  KC_SPC, KC_LEFT_CTRL,    TG(3),  KC_ENT, KC_BSPC
+                                   KC_LEFT_ALT,  KC_SPC, KC_LEFT_CTRL,    TG(4),  KC_ENT, KC_BSPC
                                       //`--------------------------'  `--------------------------'
   )
 };
