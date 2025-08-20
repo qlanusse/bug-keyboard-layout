@@ -1,0 +1,180 @@
+units:
+  # Proxy Spacing
+  kx: cx
+  ky: cy
+  # Padding
+  m: 4
+  px: kx + m
+  py: ky + m
+  # Preview
+  $default_width: cx
+  $default_height: cy
+points:
+  zones:
+    main:
+      #KiCAD placement
+      anchor:
+        shift: [100,-100]
+      key:
+        padding: 1ky
+        spread: 1kx+2
+      columns:
+        outer:
+        pinky:
+        ring:
+          key:
+            stagger: 10
+            splay: -4
+        middle:
+          key:
+            stagger: 5
+        index:
+          key:
+            stagger: -5
+        inner:
+          key:
+            splay: -4
+            stagger: -5
+      rows:
+        bot:
+        mid:
+        top:
+    thumb:
+      key:
+        padding: 1ky
+        spread: kx + 2
+        splay: -10
+      anchor:
+        ref: main_ring_bot
+        shift: [0.5kx, -1.5ky]
+      columns:
+        1:
+          rows:
+            high:
+              skip: true
+          key:
+            splay: 0
+        2:
+          rows:
+            high:
+              skip: true
+        3:
+          rows:
+            high:
+              skip: true
+        4:
+        5:
+      rows:
+        low:
+        high:
+  rotate: -10
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: main_outer_top
+          shift: [-0.5px,0.5py]
+        - ref: main_pinky_top
+          shift: [0.5px,0.5py]
+        - ref: main_ring_top
+          shift: [-0.5px,0.5py]
+        - ref: main_ring_top
+          shift: [0.5cx,0.5py]
+        - ref: main_middle_top
+          shift: [-0.5px,0.5py]
+        - ref: main_middle_top
+          shift: [0.5px,0.5py]
+        - ref: main_index_top
+          shift: [-0.5cx,0.5py]
+        - ref: main_index_top
+          shift: [0.5px,0.5py]
+        - ref: main_inner_top
+          shift: [-0.5px,0.5py]
+        - ref: main_inner_top
+          shift: [1.5px-m,0.5py]
+        - ref: main_inner_bot
+          shift: [1.5px-m,-0.5py+m]
+        - ref: thumb_5_high
+          shift: [0.5px,0.5py]
+        - ref: thumb_5_low
+          shift: [0.5px,-0.5py]
+        - ref: thumb_2_low
+          shift: [0.5px, -0.5py]
+        - ref: thumb_2_low
+          shift: [0.5px, -0.5py]
+        - ref: thumb_1_low
+          shift: [-0.5px,-0.5py]
+        - ref: main_pinky_bot
+          shift: [0.5px, -0.5py]
+        - ref: main_outer_bot
+          shift: [-0.5px,-0.5py]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  tutorial:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: ceoloide/diode_tht_sod123
+        where: true
+        params:
+          reversible: true
+          include_thru_hole_smd_pads: true
+          include_traces_vias: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      promicro:
+        what: ceoloide/mcu_nice_nano
+        params:
+          reversible: true
+        where:
+          ref: main_inner_top
+          shift: [20, -8]
+      battery:
+        what: ceoloide/battery_connector_jst_ph_2
+        params:
+          reversible: true
+        where:
+          ref: main_middle_bot
+          shift: [-0.2kx, -1ky+2]
+          rotate: 90
+      screen:
+        what: ceoloide/display_nice_view
+        params:
+          reversible: true
+        where:
+          ref: main_inner_mid
+          shift: [1kx+2, 5]
+      reset:
+        what: ceoloide/reset_switch_smd_side
+        params:
+          reversible: true
+        where:
+          ref: main_inner_bot
+          shift: [1.4kx+1, 0.4ky]
+          rotate: -90
