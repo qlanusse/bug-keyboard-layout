@@ -22,8 +22,8 @@ xkb_symbols "bug" {
     key <AD04> { [	   h,          H,    ediaeresis,       Ediaeresis ] };
     key <AD05> { [	   p,          P,            at,         EuroSign ] };
     key <AD06> { [    exclam,   question                                  ] };
-    key <AD07> { [	   v,          V                                  ] };
-    key <AD08> { [	   d,          D                                  ] };
+    key <AD07> { [	   v,          V,         minus,            minus ] };
+    key <AD08> { [	   d,          D,    underscore,       underscore ] };
     key <AD09> { [	   l,          L                                  ] };
     key <AD10> { [	   j,          J                                  ] };
     key <AD11> { [	   z,          Z                                  ] };
@@ -34,7 +34,7 @@ xkb_symbols "bug" {
     key <AC03> { [	   i,          I,        eacute,           Eacute ] };
     key <AC04> { [	   e,          E,        egrave,           Egrave ] };
     key <AC05> { [	comma, semicolon,       percent,       asciitilde ] };
-    key <AC06> { [	   c,          C,         minus,       underscore ] };
+    key <AC06> { [	   c,          C,      ccedilla,         Ccedilla ] };
     key <AC07> { [	   t,          T,     parenleft,       parenright ] };
     key <AC08> { [	   s,          S,     braceleft,       braceright ] };
     key <AC09> { [	   r,          R,   bracketleft,     bracketright ] };
@@ -57,4 +57,3 @@ xkb_symbols "bug" {
 
     include "level3(ralt_switch)"
 };
-
